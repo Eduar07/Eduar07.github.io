@@ -45,8 +45,7 @@
             pointer-events: none;
             z-index: 9999;
             opacity: 0;
-            transition: opacity 0.3s, transform 0.1s; /* Se agregó transform para el movimiento suave */
-            /* Agregado para posicionar inicialmente */
+            transition: opacity 0.3s, transform 0.1s;
             transform: translate(-50%, -50%);
         }
 
@@ -137,7 +136,6 @@
             transition: 0.3s;
         }
 
-        /* Transiciones para el icono de hamburguesa */
         .menu-toggle.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
@@ -148,7 +146,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Hero Section con partículas */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -393,6 +391,65 @@
 
         .about-image {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .profile-photo {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5));
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background-clip: padding-box;
+            padding: 5px;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 0 0 10px rgba(99, 102, 241, 0.1),
+                0 0 0 20px rgba(99, 102, 241, 0.05),
+                0 30px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .profile-photo:hover img {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 
+                0 0 0 10px rgba(236, 72, 153, 0.15),
+                0 0 0 20px rgba(236, 72, 153, 0.08),
+                0 40px 80px rgba(236, 72, 153, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .photo-border {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: calc(100% + 30px);
+            height: calc(100% + 30px);
+            border: 3px dashed var(--primary);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-photo:hover .photo-border {
+            border-color: var(--accent);
+            animation-duration: 10s;
         }
 
         .floating-card {
@@ -589,6 +646,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .tag {
@@ -599,6 +657,21 @@
             font-size: 0.85rem;
             font-weight: 600;
             border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+            gap: 0.8rem;
         }
 
         /* Contacto */
@@ -799,11 +872,11 @@
                 <p>Con experiencia en múltiples tecnologías y metodologías ágiles, busco siempre la excelencia en cada proyecto que desarrollo. Mi objetivo es construir soluciones que no solo funcionen perfectamente, sino que también ofrezcan una experiencia de usuario excepcional.</p>
                 <div class="stats">
                     <div class="stat-item">
-                        <div class="stat-number">5+</div>
+                        <div class="stat-number">8+</div>
                         <div class="stat-label">Tecnologías</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">10+</div>
+                        <div class="stat-number">15+</div>
                         <div class="stat-label">Proyectos</div>
                     </div>
                     <div class="stat-item">
@@ -813,12 +886,16 @@
                 </div>
             </div>
             <div class="about-image">
+                <div class="profile-photo">
+                    <img src="foto-perfil.jpg" alt="Eduar Guerrero">
+                    <div class="photo-border"></div>
+                </div>
                 <div class="floating-card">
                     <div class="code-preview">
                         <div>const developer = {</div>
                         <div>&nbsp;&nbsp;name: "Eduar",</div>
-                        <div>&nbsp;&nbsp;skills: ["Python", "JS"],</div>
-                        <div>&nbsp;&nbsp;passion: "Code",</div>
+                        <div>&nbsp;&nbsp;skills: ["Python", "JS", "Java"],</div>
+                        <div>&nbsp;&nbsp;passion: "Clean Code",</div>
                         <div>&nbsp;&nbsp;available: true</div>
                         <div>};</div>
                     </div>
@@ -879,49 +956,102 @@
         <p class="section-subtitle">Soluciones innovadoras que demuestran mi experiencia y creatividad</p>
         <div class="projects-grid">
             <div class="project-card">
-                <div class="project-image">🌐</div>
+                <div class="project-image">💰</div>
                 <div class="project-content">
-                    <h3>Aplicación Web Full Stack</h3>
-                    <p>Plataforma completa con frontend interactivo y backend robusto, implementando arquitectura escalable y mejores prácticas de desarrollo.</p>
+                    <h3>Sistema de Gestión de Créditos</h3>
+                    <p>Sistema completo para gestión de créditos financieros con cálculo de intereses, gestión de usuarios y reportes detallados.</p>
                     <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
                         <span class="tag">MySQL</span>
+                        <span class="tag">JDBC</span>
                     </div>
+                    <a href="https://github.com/Eduar07/SistemaDeCreditos" target="_blank" class="project-link">
+                        Ver Código →
+                    </a>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">📱</div>
+                <div class="project-image">🛒</div>
                 <div class="project-content">
-                    <h3>Sistema de Gestión</h3>
-                    <p>Sistema responsive para administración de datos con interfaz intuitiva, dashboards interactivos y funcionalidades avanzadas.</p>
+                    <h3>Carrito de Compras</h3>
+                    <p>Sistema de carrito de compras interactivo con gestión de productos, cálculo de totales y persistencia de datos.</p>
                     <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="https://github.com/Eduar07/Carrito" target="_blank" class="project-link">
+                        Ver Código →
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">🚗</div>
+                <div class="project-content">
+                    <h3>Sistema de Concesionario</h3>
+                    <p>Aplicación para gestión de concesionario de vehículos con inventario, ventas y reportes administrativos.</p>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">POO</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                    <a href="https://github.com/Eduar07/Concesionario" target="_blank" class="project-link">
+                        Ver Código →
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">📅</div>
+                <div class="project-content">
+                    <h3>Sistema de Reservas (Booking)</h3>
+                    <p>Plataforma de reservas online con gestión de disponibilidad, calendario interactivo y confirmación automática.</p>
+                    <div class="project-tags">
                         <span class="tag">JavaScript</span>
                         <span class="tag">Backend</span>
+                        <span class="tag">API</span>
                     </div>
+                    <a href="https://github.com/Eduar07/booking" target="_blank" class="project-link">
+                        Ver Código →
+                    </a>
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image">🔐</div>
+                <div class="project-image">👥</div>
                 <div class="project-content">
-                    <h3>API RESTful</h3>
-                    <p>Desarrollo de API segura y escalable con documentación completa, autenticación JWT y manejo robusto de errores.</p>
+                    <h3>Red de Programadores</h3>
+                    <p>Red social para desarrolladores con perfiles profesionales, colaboración en proyectos y networking tecnológico.</p>
                     <div class="project-tags">
-                        <span class="tag">Python</span>
+                        <span class="tag">Full Stack</span>
+                        <span class="tag">Social Network</span>
                         <span class="tag">MySQL</span>
-                        <span class="tag">Git</span>
                     </div>
+                    <a href="https://github.com/Eduar07/RedProgramadores" target="_blank" class="project-link">
+                        Ver Código →
+                    </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">💻</div>
+                <div class="project-content">
+                    <h3>Más Proyectos</h3>
+                    <p>Explora todos mis repositorios en GitHub para ver más proyectos, contribuciones y experimentos de código.</p>
+                    <div class="project-tags">
+                        <span class="tag">GitHub</span>
+                    </div>
+                    <a href="https://github.com/Eduar07?tab=repositories" target="_blank" class="project-link">
+                        Ver Todos →
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+
     <section id="contacto" class="contact">
         <h2 class="section-title">Contacto</h2>
         <p class="section-subtitle">¿Tienes un proyecto en mente? ¡Trabajemos juntos para hacerlo realidad!</p>
         <div class="contact-content">
             <div class="contact-links">
-                <a href="mailto:edhuarguerrero@gmail.com" class="contact-link">
+                <a href="/cdn-cgi/l/email-protection#70151418051102170515020215021f30171d11191c5e131f1d" class="contact-link">
                     📧 Email
                 </a>
                 <a href="https://github.com/Eduar07" target="_blank" class="contact-link">
@@ -933,10 +1063,12 @@
             </div>
         </div>
     </section>
+
     <footer>
         <p>&copy; 2024 Eduar Guerrero. Desarrollado con 💙 y mucho café</p>
     </footer>
-    <script>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
         const header = document.getElementById('header');
@@ -944,13 +1076,11 @@
         const body = document.body;
         const particlesContainer = document.getElementById('particles');
 
-        // 1. Toggle del menú y de la clase 'active' en el ícono de hamburguesa
         menuToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active'); // Agregamos el toggle al ícono también
+            menuToggle.classList.toggle('active');
         });
 
-        // 2. Cerrar el menú al hacer clic en un enlace de navegación
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -958,7 +1088,6 @@
             });
         });
 
-        // 3. Efecto de encogimiento del Header al hacer scroll
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -966,13 +1095,11 @@
                 header.classList.remove('scrolled');
             }
 
-            // 4. Barra de Progreso de Scroll
             const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
             const progress = (window.scrollY / totalHeight) * 100;
             scrollProgress.style.width = progress + '%';
         });
 
-        // 5. Animación de Scroll Reveal con Intersection Observer (código de tu prompt)
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -983,7 +1110,7 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target); // Dejar de observar una vez que se ha animado
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -995,24 +1122,15 @@
             observer.observe(el);
         });
 
-        // 6. Cursor Personalizado
-        document.addEventListener('mousemove', (e) => {
-            body.style.setProperty('--mouse-x', `${e.clientX}px`);
-            body.style.setProperty('--mouse-y', `${e.clientY}px`);
-        });
-
-        // Se agregó CSS personalizado para el cursor en JavaScript
-        // (ya que no se puede usar '::before' para acceder a las propiedades 'top' y 'left' sin JS)
         document.addEventListener('mousemove', (e) => {
             const cursor = document.querySelector('body::before');
             const style = document.createElement('style');
             style.textContent = `
                 body::before {
                     transform: translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%));
-                    opacity: 1; /* Hacemos visible el cursor al mover el ratón */
+                    opacity: 1;
                 }
             `;
-            // Reemplaza el estilo anterior para actualizar la posición
             const oldStyle = document.head.querySelector('style[data-cursor]');
             if (oldStyle) {
                 oldStyle.remove();
@@ -1020,32 +1138,15 @@
             style.setAttribute('data-cursor', 'true');
             document.head.appendChild(style);
         });
-        
-        // El CSS `body::before` ya tiene `opacity: 0` y `transition: opacity 0.3s;`,
-        // así que el cursor aparece suavemente al moverse.
 
-        // 7. Generación de Partículas Dinámicas en la sección Hero
         const numParticles = 40;
         for (let i = 0; i < numParticles; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
-
-            // Posición inicial aleatoria
             const x = Math.random() * 100;
             const y = Math.random() * 100;
             particle.style.left = `${x}vw`;
             particle.style.top = `${y}vh`;
-
-            // Retardo de animación aleatorio
-            const delay = Math.random() * 20; // 0 a 20s
+            const delay = Math.random() * 20;
             particle.style.animationDelay = `-${delay}s`;
-
-            // Duración de animación aleatoria
-            const duration = 15 + Math.random() * 10; // 15s a 25s
-            particle.style.animationDuration = `${duration}s`;
-
-            particlesContainer.appendChild(particle);
-        }
-    </script>
-</body>
-</html>
+            const duration = 15 + Math.random() * 10;
